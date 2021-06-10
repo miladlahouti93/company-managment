@@ -8,8 +8,6 @@ import java.util.Set;
 @Table(name = "category")
 public class category implements Serializable {
 
-    private static final long serialVersionUID = 25416545L;
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "category_id")

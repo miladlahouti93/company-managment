@@ -8,8 +8,6 @@ import java.util.Set;
 @Table(name = "vacations")
 public class Vacation {
 
-    private static final long serialVersionUID = 25416550L;
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column()

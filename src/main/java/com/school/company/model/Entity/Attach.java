@@ -9,8 +9,6 @@ import java.util.Set;
 @Table(name = "attach")
 public class Attach implements Serializable {
 
-    private static final long serialVersionUID = 25416552L;
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")

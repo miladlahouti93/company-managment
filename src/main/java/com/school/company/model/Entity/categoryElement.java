@@ -9,8 +9,6 @@ import java.io.Serializable;
 @Table(name = "category_elements")
 public class categoryElement implements Serializable {
 
-    private static final long serialVersionUID = 25416549L;
-    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "categoryelement_id")

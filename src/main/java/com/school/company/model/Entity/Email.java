@@ -8,8 +8,6 @@ import java.util.Set;
 @Table(name = "emails")
 public class Email implements Serializable {
 
-    private static final long serialVersionUID = 25416548L;
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "email_id")
