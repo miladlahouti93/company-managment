@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate mapping DTD3.0//EN"
+        "http://hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.school.company.model.Entity.Employee" table="employees">
+        <id name="id" type="int">
+            <column name="id"/>
+            <generator class=""/>
+        </id>
+        <property name="firstName" type="java.lang.String">
+            <column name="firstname"/>
+        </property>
+        <property name="lastName" type="java.lang.String">
+            <column name="lastname"/>
+        </property>
+        <property name="email" type="java.lang.String">
+            <column name="email"/>
+        </property>
+        <property name="password" type="java.lang.String">
+            <column name="password"/>
+        </property>
+        <property name="createdAt" type="java.lang.String">
+            <column name="created_at"/>
+        </property>
+        <property name="updatedAt" type="java.lang.String">
+            <column name="updated_at"/>
+        </property>
+        <property name="groupId" type="int">
+            <column name="group_id"/>
+        </property>
+        <property name="managerId" type="int">
+            <column name="managerId"/>
+        </property>
+        <property name="vacationId" type="int">
+            <column name="vacationId"/>
+        </property>
+        <property name="emailId" type="int">
+            <column name="emailId"/>
+        </property>
+
+    </class>
+</hibernate-mapping>
