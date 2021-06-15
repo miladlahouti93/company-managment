@@ -5,34 +5,34 @@ import java.io.Serializable;
 import java.util.Set;
 
 @Entity
-@Table(name = "category")
-public class category implements Serializable {
+@Table(name = "t_category")
+public class category extends BaseEntity implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "category_id")
-    private int category_id;
+    @Column(name = "c_CategoryId")
+    private int categoryId;
 
-    @Column(name = "categoryname")
+    @Column(name = "c_CategoryName")
     private String categoryName;
 
     @OneToMany(mappedBy = "category")
-    private Set<categoryElement> categoryElements;
+    private transient Set<categoryElement> categoryElements;
 
     public category() {
     }
 
-    public category(int category_id, String categoryName) {
-        this.category_id = category_id;
+    public category(int categoryId, String categoryName) {
+        this.categoryId = categoryId;
         this.categoryName = categoryName;
     }
 
-    public category(String categoryname) {
-        this.categoryName = categoryname;
+    public category(String categoryName) {
+        this.categoryName = categoryName;
     }
 
-    public int getCategory_id() {
-        return category_id;
+    public int getCategoryId() {
+        return categoryId;
     }
 
     public String getCategoryName() {
@@ -41,13 +41,5 @@ public class category implements Serializable {
 
     public void setCategoryName(String categoryName) {
         this.categoryName = categoryName;
-    }
-
-    public Set<categoryElement> getCategoryElements() {
-        return categoryElements;
-    }
-
-    public void setCategoryElements(Set<categoryElement> categoryElements) {
-        this.categoryElements = categoryElements;
     }
 }

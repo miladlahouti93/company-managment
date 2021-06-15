@@ -1,60 +1,45 @@
 package com.school.company.model.Entity;
 
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Set;
 
 @Entity
-@Table(name = "attach")
+@Table(name = "t_attach")
 public class Attach implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private int id;
+    @Column(name = "c_AttachId")
+    private int attachId;
 
-    @Column(name = "attach")
-    private String attach;
+    @Column(name = "c_Path")
+    private String path;
 
     @OneToMany(mappedBy = "attach")
-    private Set<Email> emails;
+    private transient Set<Email> emails;
 
     public Attach() {
     }
 
-    public Attach(int id, String attach) {
-        this.id = id;
-        this.attach = attach;
+    public Attach(int attachId, String path) {
+        this.attachId = attachId;
+        this.path = path;
     }
 
-    public Attach(String attach) {
-        this.attach = attach;
+    public Attach(String path) {
+        this.path = path;
     }
 
-    public int getId() {
-        return id;
+    public int getAttachId() {
+        return attachId;
     }
 
-    public String getAttach() {
-        return attach;
+    public String getPath() {
+        return path;
     }
 
-    public void setId(int id,String attach) {
-        this.id = id;
-        this.attach = attach;
+    public void setPath(String path) {
+        this.path = path;
     }
-
-    public void setAttach(String attach) {
-        this.attach = attach;
-    }
-
-    public Set<Email> getEmails() {
-        return emails;
-    }
-
-    public void setEmails(Set<Email> emails) {
-        this.emails = emails;
-    }
-
 }

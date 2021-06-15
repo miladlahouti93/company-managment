@@ -5,29 +5,29 @@ import java.io.Serializable;
 import java.util.Set;
 
 @Entity
-@Table(name = "emails")
-public class Email implements Serializable {
+@Table(name = "t_email")
+public class Email extends BaseEntity implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "email_id")
+    @Column(name = "c_EmailId")
     private int id;
 
-    @Column(name = "title")
+    @Column(name = "c_EmailTitle")
     private String title;
 
-    @Column(name = "text")
+    @Column(name = "c_EmailText")
     private String text;
 
-    @Column(name = "send_at")
+    @Column(name = "c_SendDateAndTime")
     private String sendAt;
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn(name = "attach_id")
+    @JoinColumn(name = "c_Attach")
     private Attach attach;
 
     @OneToMany(mappedBy = "email")
-    private Set<Employee> employees;
+    private transient Set<Employee> employees;
 
     public Email() {
     }
@@ -39,6 +39,7 @@ public class Email implements Serializable {
         this.sendAt = sendAt;
         this.attach = attach;
     }
+
 
     public Email(String title, String text, String sendAt, Attach attach) {
         this.title = title;
@@ -81,13 +82,5 @@ public class Email implements Serializable {
 
     public void setAttach(Attach attach) {
         this.attach = attach;
-    }
-
-    public Set<Employee> getEmployees() {
-        return employees;
-    }
-
-    public void setEmployees(Set<Employee> employees) {
-        this.employees = employees;
     }
 }

@@ -1,7 +1,7 @@
 <html>
 <body>
 <h2>ثبتنام کاربر</h2>
-<form action="action_page.php">
+<form action="register" method="get">
     <div class="container">
         <h1>ثبتنام کاربر</h1>
 

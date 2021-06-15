@@ -6,89 +6,86 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "employees")
-public class Employee implements Serializable {
+@Table(name = "t_employee")
+public class Employee extends BaseEntity implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "employee_id")
-    private int id;
+    @Column(name = "c_EmployeeId")
+    private int employeeID;
 
-    @Column(name = "fistname")
+    @Column(name = "c_FirstName")
     private String firstName;
 
-    @Column(name = "lastname")
+    @Column(name = "c_LastName")
     private String lastName ;
 
-    @Column(name = "email_address")
-    private String email;
+    @Column(name = "c_EmailAddress")
+    private String emailAddress;
 
-    @Column(name = "password")
+    @Column(name = "c_Password")
     private String password;
 
-    @Enumerated(EnumType.STRING)
-    private role role;
 
-    @Column(name="created_at")
-    private String createdAt;
+    @Column(name="c_CreateDateAndTime")
+    private String createDateAndTime;
 
-    @Column(name = "updated_at")
-    private String updatedAt;
 
     @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-    @JoinColumn(name = "manager_id")
+    @JoinColumn(name = "c_Employee")
     private Employee employee;
 
     @ManyToOne(cascade = CascadeType.ALL , fetch = FetchType.LAZY)
-    @JoinColumn(name = "categoryelement_id" )
+    @JoinColumn(name = "c_CategoryElement" )
     private categoryElement categoryElement;
 
     @ManyToOne(cascade = CascadeType.ALL , fetch = FetchType.LAZY)
-    @JoinColumn(name = "email_id" )
+    @JoinColumn(name = "c_Email" )
     private Email Email;
 
     @ManyToOne(cascade = CascadeType.ALL , fetch = FetchType.LAZY)
-    @JoinColumn(name = "vacation_id" )
+    @JoinColumn(name = "c_Vacation" )
     private Vacation vacation;
 
+
     @OneToMany(mappedBy = "employees")
-    private Set<Employee> employees = new HashSet<Employee>();
+    private transient Set<Employee> employees = new HashSet<Employee>();
 
     @ManyToMany(targetEntity = Email.class,cascade = CascadeType.ALL)
-    @JoinTable(name = "email_employee",joinColumns ={@JoinColumn(name = "employee_id")},
-    inverseJoinColumns = {@JoinColumn(name = "email_id")})
+    @JoinTable(name = "t_emailemployee",joinColumns ={@JoinColumn(name = "c_Employee")},
+    inverseJoinColumns = {@JoinColumn(name = "c_Email")})
     private Set<Email> emails;
 
     public Employee() {
     }
 
-    public Employee(int id, String firstName, String lastName, String email, String password, com.school.company.model.Entity.role role, String createdAt, String updatedAt, Employee employee, com.school.company.model.Entity.categoryElement categoryElement, com.school.company.model.Entity.Email email1, Vacation vacation) {
-        this.id = id;
+    public Employee(int employeeID, String firstName, String lastName, String emailAddress, String password, String createDateAndTime, Employee employee, com.school.company.model.Entity.categoryElement categoryElement, com.school.company.model.Entity.Email email, Vacation vacation) {
+        this.employeeID = employeeID;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.email = email;
+        this.emailAddress = emailAddress;
         this.password = password;
-        this.role = role;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
+        this.createDateAndTime = createDateAndTime;
         this.employee = employee;
         this.categoryElement = categoryElement;
-        Email = email1;
+        Email = email;
         this.vacation = vacation;
     }
 
-    public Employee(String firstName, String lastName, String email, String password, com.school.company.model.Entity.role role, String createdAt, String updatedAt, Employee employee, com.school.company.model.Entity.categoryElement categoryElement, com.school.company.model.Entity.Email email1, Vacation vacation) {
+    public Employee(String firstName, String lastName, String emailAddress, String password, String createDateAndTime, Employee employee, com.school.company.model.Entity.categoryElement categoryElement, com.school.company.model.Entity.Email email, Vacation vacation) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.email = email;
+        this.emailAddress = emailAddress;
         this.password = password;
-        this.role = role;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
+        this.createDateAndTime = createDateAndTime;
         this.employee = employee;
         this.categoryElement = categoryElement;
-        Email = email1;
+        Email = email;
         this.vacation = vacation;
+    }
+
+    public int getEmployeeID() {
+        return employeeID;
     }
 
     public String getFirstName() {
@@ -107,12 +104,12 @@ public class Employee implements Serializable {
         this.lastName = lastName;
     }
 
-    public String getEmail() {
-        return email;
+    public String getEmailAddress() {
+        return emailAddress;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setEmailAddress(String emailAddress) {
+        this.emailAddress = emailAddress;
     }
 
     public String getPassword() {
@@ -123,28 +120,12 @@ public class Employee implements Serializable {
         this.password = password;
     }
 
-    public com.school.company.model.Entity.role getRole() {
-        return role;
+    public String getCreateDateAndTime() {
+        return createDateAndTime;
     }
 
-    public void setRole(com.school.company.model.Entity.role role) {
-        this.role = role;
-    }
-
-    public String getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(String createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public String getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(String updatedAt) {
-        this.updatedAt = updatedAt;
+    public void setCreateDateAndTime(String createDateAndTime) {
+        this.createDateAndTime = createDateAndTime;
     }
 
     public Employee getEmployee() {
@@ -163,6 +144,10 @@ public class Employee implements Serializable {
         this.categoryElement = categoryElement;
     }
 
+    public com.school.company.model.Entity.Email getEmail() {
+        return Email;
+    }
+
     public void setEmail(com.school.company.model.Entity.Email email) {
         Email = email;
     }
@@ -173,21 +158,5 @@ public class Employee implements Serializable {
 
     public void setVacation(Vacation vacation) {
         this.vacation = vacation;
-    }
-
-    public Set<Employee> getEmployees() {
-        return employees;
-    }
-
-    public void setEmployees(Set<Employee> employees) {
-        this.employees = employees;
-    }
-
-    public Set<com.school.company.model.Entity.Email> getEmails() {
-        return emails;
-    }
-
-    public void setEmails(Set<com.school.company.model.Entity.Email> emails) {
-        this.emails = emails;
     }
 }
