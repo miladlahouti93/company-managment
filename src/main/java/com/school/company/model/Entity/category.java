@@ -16,8 +16,7 @@ public class category extends BaseEntity implements Serializable {
     @Column(name = "c_CategoryName")
     private String categoryName;
 
-    @OneToMany(mappedBy = "category")
-    private transient Set<categoryElement> categoryElements;
+
 
     public category() {
     }

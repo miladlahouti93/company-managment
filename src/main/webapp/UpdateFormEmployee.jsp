@@ -15,7 +15,7 @@
 
 <html>
 <head>
-    <title>فرم ثبت نام</title>
+    <title>فرم ویرایش اطلاعات </title>
 </head>
 
 <head dir="rtl">
@@ -43,70 +43,69 @@
         <div class="col-md-4 order-md-2 mb-4">
         </div>
         <div class="col-md-8 order-md-1">
-            <h4 class="mb-3" dir="ltr">فرم ثبت نام</h4>
+            <h4 class="mb-3" dir="ltr">فرم ویرایش اطلاعات </h4>
 
-            <form action="rest/employee/add" method="post" class="needs-validation" novalidate>
+            <form action="<%=request.getContextPath()%>/updateEmployee" method="post" class="needs-validation" novalidate>
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+
+                        <input type="hidden" name="employeeID" id="employeeID" dir="ltr"value="${employeeInfo.employeeID}" >
+
+                    </div>
+
+                </div>
                 <div class="row">
                     <div class="col-md-6 mb-3">
                         <label for="firstName" dir="ltr">نام</label>
-                        <input type="text" class="form-control" id="firstName" name="firstName" required>
-                        <div class="invalid-feedback">
-                            لطفا نام را وارد کنید.
-                        </div>
+                        <input type="text" class="form-control" id="firstName" name="firstName" value="${employeeInfo.firstName}" required>
+
                     </div>
                     <div class="col-md-6 mb-3">
                         <label for="lastName" dir="ltr">نام خانوادگی</label>
-                        <input type="text" class="form-control" id="lastName" name="lastName" required>
-                        <div class="invalid-feedback">
-                            لطفا نام خانوادگی را وارد کنید.
-                        </div>
+                        <input type="text" class="form-control" id="lastName" name="lastName" value="${employeeInfo.lastName}" required>
+
                     </div>
                 </div>
 
 
                 <div class="mb-3">
                     <label for="email" dir="ltr">ادرس ایمیل </label>
-                    <input type="email" class="form-control" id="email" name="emailAddress"
-                           placeholder="you@example.com">
-                    <div class="invalid-feedback">
-                        لطفا ایمیل خود را واد کنید برای ارسال جزئیات خرید الزامیست
-                    </div>
+                    <input type="email" class="form-control" id="email" name="emailAddress" value="${employeeInfo.emailAddress}">
+
                 </div>
 
                 <div class="mb-3">
                     <label for="password" dir="ltr">رمز عبور</label>
-                    <input type="text" class="form-control" id="password" name="password" required>
-                    <div class="invalid-feedback">
-                        لطفا آدرس خود را وارد کنید
-                    </div>
-                </div>
+                    <input type="text" class="form-control" id="password" name="password" value="${employeeInfo.password}" required>
 
+                </div>
 
                 <div class="row">
                     <div class="col-md-5 mb-3">
                         <label for="category" dir="ltr">گروه شغلی</label>
 
                         <select name="category" id="category"class="custom-select d-block w-100">
-                            <option value="">--select--</option>
+                            <option value=${employeeInfo.categoryElement.categoryElement_id} selected>${employeeInfo.categoryElement.categoryElementPersianName}</option>
                             <c:forEach items="${listCategory}" var="categoryElement">
-                            <tr>
-                                <option value=${categoryElement.categoryElement_id}>${categoryElement.categoryElementPersianName}</option>
-              </tr>
-            </c:forEach>
+                                <tr>
+                                    <option value=${categoryElement.categoryElement_id}>${categoryElement.categoryElementPersianName}</option>
+                                </tr>
+                            </c:forEach>
                         </select>
 
                     </div>
                     <div class="col-md-4 mb-3">
-                                <label for="Manager" dir="ltr">نام مدیر</label>
+                        <label for="Manager" dir="ltr">نام مدیر</label>
 
-                                <select name="Manager" id="Manager" class="custom-select d-block w-100">
-                                    <option value="">--select--</option>
-                                    <c:forEach items="${listEmployee}" var="listemployee">
-                            <tr>
-                                <option value=${listemployee.employeeID}>${listemployee.firstName} ${listemployee.lastName}</option>
-              </tr>
+                        <select name="Manager" id="Manager" class="custom-select d-block w-100">
+                            <option value=${employeeInfo.employee.employeeID} selected>${employeeInfo.employee.firstName} ${employeeInfo.employee.lastName}</option>
+                            <c:forEach items="${listEmployee}"  var="listemployee">
+                                <tr>
+                                    <option value=${listemployee.employeeID}>${listemployee.firstName} ${listemployee.lastName}</option>
+                                </tr>
 
-            </c:forEach>
+                            </c:forEach>
                         </select>
                     </div>
 
@@ -114,17 +113,14 @@
 
 
                 <hr class="mb-4">
-                                <button class="btn btn-primary btn-lg btn-block" type="submit">ثبت</button>
+                <button class="btn btn-primary btn-lg btn-block" type="submit">ویرایش</button>
             </form>
         </div>
     </div>
 
 </div>
-<script type="text/javascript" src="src/main/webapp/assets/js/jquery.js"></script>
-<script>
 
-
-</script>
 
 </body>
 </html>
+

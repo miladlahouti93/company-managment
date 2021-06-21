@@ -6,7 +6,7 @@ import java.util.Set;
 
 
 @Entity
-@Table(name = "t_vacations")
+@Table(name = "t_vacation")
 public class Vacation extends BaseEntity implements Serializable {
 
     @Id
@@ -19,10 +19,6 @@ public class Vacation extends BaseEntity implements Serializable {
 
     @Column(name = "c_VacationEndDateAndTime")
     private String VacationEndDateAndTime;
-
-
-    @OneToMany(mappedBy = "vacation")
-    private transient Set<Employee> employees;
 
 
     public Vacation() {

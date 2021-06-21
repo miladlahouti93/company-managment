@@ -27,23 +27,23 @@ public class Employee extends BaseEntity implements Serializable {
     private String password;
 
 
-    @Column(name="c_CreateDateAndTime")
+    @Column(name="c_createDateAndTime")
     private String createDateAndTime;
 
 
-    @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "c_Employee")
     private Employee employee;
 
-    @ManyToOne(cascade = CascadeType.ALL , fetch = FetchType.LAZY)
+    @ManyToOne( fetch = FetchType.EAGER)
     @JoinColumn(name = "c_CategoryElement" )
     private categoryElement categoryElement;
 
-    @ManyToOne(cascade = CascadeType.ALL , fetch = FetchType.LAZY)
+    @ManyToOne( fetch = FetchType.EAGER)
     @JoinColumn(name = "c_Email" )
     private Email Email;
 
-    @ManyToOne(cascade = CascadeType.ALL , fetch = FetchType.LAZY)
+    @ManyToOne( fetch = FetchType.EAGER)
     @JoinColumn(name = "c_Vacation" )
     private Vacation vacation;
 

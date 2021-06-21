@@ -26,8 +26,6 @@ public class Email extends BaseEntity implements Serializable {
     @JoinColumn(name = "c_Attach")
     private Attach attach;
 
-    @OneToMany(mappedBy = "email")
-    private transient Set<Employee> employees;
 
     public Email() {
     }

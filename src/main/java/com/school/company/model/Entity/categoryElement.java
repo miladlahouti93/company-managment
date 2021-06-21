@@ -22,7 +22,7 @@ public class categoryElement extends BaseEntity implements Serializable {
     @Column(name = "c_CategoryElementCode")
     private int categoryElementCode;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "c_Category")
     private category category;
 
