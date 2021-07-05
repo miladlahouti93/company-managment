@@ -11,7 +11,7 @@
  Target Server Version : 100418
  File Encoding         : 65001
 
- Date: 15/06/2021 12:05:44
+ Date: 21/06/2021 19:35:38
 */
 
 SET NAMES utf8mb4;
@@ -43,11 +43,13 @@ CREATE TABLE `t_category`  (
   `c_Active` tinyint(1) NULL DEFAULT 1,
   `c_DeleteDateAndTime` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`c_CategoryId`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of t_category
 -- ----------------------------
+INSERT INTO `t_category` VALUES (1, 'role', 1, NULL, 1, NULL);
+INSERT INTO `t_category` VALUES (2, 'vacationStatus', 1, NULL, 1, NULL);
 
 -- ----------------------------
 -- Table structure for t_categoryelement
@@ -66,11 +68,13 @@ CREATE TABLE `t_categoryelement`  (
   PRIMARY KEY (`c_CategoryElementId`) USING BTREE,
   INDEX `categoryfk`(`c_Category`) USING BTREE,
   CONSTRAINT `categoryfk` FOREIGN KEY (`c_Category`) REFERENCES `t_category` (`c_CategoryId`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of t_categoryelement
 -- ----------------------------
+INSERT INTO `t_categoryelement` VALUES (1, 'programmer', 1, 1, NULL, 1, NULL, 'برنامه نویس', 1);
+INSERT INTO `t_categoryelement` VALUES (2, 'tester', 1, 1, NULL, 1, NULL, 'کارشناس تست', 1);
 
 -- ----------------------------
 -- Table structure for t_email
@@ -123,7 +127,6 @@ CREATE TABLE `t_employee`  (
   `c_EmailAddress` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `c_Password` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `c_createDateAndTime` timestamp NOT NULL DEFAULT curtime,
-  `updated_at` timestamp NULL DEFAULT NULL,
   `c_Employee` int NULL DEFAULT NULL,
   `c_Vacation` int NULL DEFAULT NULL,
   `c_Email` int NULL DEFAULT NULL,
@@ -141,11 +144,17 @@ CREATE TABLE `t_employee`  (
   CONSTRAINT `emailemployeefk` FOREIGN KEY (`c_Email`) REFERENCES `t_email` (`c_EmailId`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `manegerfk` FOREIGN KEY (`c_Employee`) REFERENCES `t_employee` (`c_EmployeeId`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `vacationfk` FOREIGN KEY (`c_Vacation`) REFERENCES `t_vacation` (`c_VacationId`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 12 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of t_employee
 -- ----------------------------
+INSERT INTO `t_employee` VALUES (3, 'الهه', 'صدوقی', 'eli.sadughi@datin.ir', '1234', '2021-06-18 20:43:29', NULL, NULL, NULL, NULL, 2, NULL, 0, '2021-06-21 10:20:11');
+INSERT INTO `t_employee` VALUES (4, 'رضا', 'صادقی', 'rezasadeghi@dotin.ir', '8965', '2021-06-19 00:19:55', NULL, NULL, NULL, NULL, 0, NULL, 0, NULL);
+INSERT INTO `t_employee` VALUES (5, 'سعید', 'سعیدی', 'saeedsaeedi@dotin.ir', '6258', '2021-06-20 09:25:05', NULL, NULL, NULL, NULL, 0, NULL, 0, NULL);
+INSERT INTO `t_employee` VALUES (7, 'امیر', 'امیری', 'amir.amiri@dotin.ir', '9853', '2021-06-20 16:10:43', NULL, NULL, NULL, NULL, 0, NULL, 0, NULL);
+INSERT INTO `t_employee` VALUES (9, 'Ø±Ø¶Ø§', 'Ø¹Ø§Ø¨Ø¯Û', 'rezaabedi@dotin.ir', '95132', '2021-06-21 08:57:04', 4, NULL, NULL, 1, 2, NULL, 0, NULL);
+INSERT INTO `t_employee` VALUES (11, 'ÙØ­ÙØ¯', 'ÙØ±Ø§Ø¯Û', 'mostafamostafavi@dotin.ir', '9635741', '2021-06-21 18:48:49', 4, NULL, NULL, 2, 2, NULL, 0, NULL);
 
 -- ----------------------------
 -- Table structure for t_vacation
