@@ -1,7 +1,7 @@
 package com.school.company.model.Service;
 
-import com.school.company.model.DAO.CategoryElementDAO;
-import com.school.company.model.DAO.CtegoryElementDAOImplement;
+import com.school.company.model.DAO.CategoryDAO.CategoryElementDAO;
+import com.school.company.model.DAO.CategoryDAO.CtegoryElementDAOImplement;
 import com.school.company.model.Entity.categoryElement;
 
 import java.util.List;

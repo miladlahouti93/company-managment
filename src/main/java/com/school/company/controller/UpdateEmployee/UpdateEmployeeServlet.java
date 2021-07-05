@@ -4,14 +4,11 @@ import com.school.company.model.Entity.Employee;
 import com.school.company.model.Entity.categoryElement;
 import com.school.company.model.Service.CategoryElementService;
 import com.school.company.model.Service.EmployeeService;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.ws.rs.core.Response;
 import java.io.IOException;
 import java.util.List;
 
@@ -37,6 +34,7 @@ public class UpdateEmployeeServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
         String employeeId=request.getParameter("employeeID");
         String firstName = request.getParameter("firstName");
         String lastName = request.getParameter("lastName");
@@ -61,6 +59,7 @@ public class UpdateEmployeeServlet extends HttpServlet {
         employeeService.updateEmployee(Integer.parseInt(employeeId),employee);
 
 
-        Response.status(200).entity("updated employee").build();
+
     }
+
 }

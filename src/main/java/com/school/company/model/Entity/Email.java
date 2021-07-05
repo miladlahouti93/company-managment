@@ -7,7 +7,6 @@ import java.util.Set;
 @Entity
 @Table(name = "t_email")
 public class Email extends BaseEntity implements Serializable {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "c_EmailId")

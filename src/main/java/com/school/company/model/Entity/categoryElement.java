@@ -7,7 +7,6 @@ import java.io.Serializable;
 @Entity
 @Table(name = "t_categoryelement")
 public class categoryElement extends BaseEntity implements Serializable {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "c_CategoryElementId")

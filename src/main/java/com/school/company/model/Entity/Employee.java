@@ -26,10 +26,8 @@ public class Employee extends BaseEntity implements Serializable {
     @Column(name = "c_Password")
     private String password;
 
-
     @Column(name="c_createDateAndTime")
     private String createDateAndTime;
-
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "c_Employee")
@@ -43,10 +41,6 @@ public class Employee extends BaseEntity implements Serializable {
     @JoinColumn(name = "c_Email" )
     private Email Email;
 
-    @ManyToOne( fetch = FetchType.EAGER)
-    @JoinColumn(name = "c_Vacation" )
-    private Vacation vacation;
-
 
     @OneToMany(mappedBy = "employees")
     private transient Set<Employee> employees = new HashSet<Employee>();
@@ -59,7 +53,7 @@ public class Employee extends BaseEntity implements Serializable {
     public Employee() {
     }
 
-    public Employee(int employeeID, String firstName, String lastName, String emailAddress, String password, String createDateAndTime, Employee employee, com.school.company.model.Entity.categoryElement categoryElement, com.school.company.model.Entity.Email email, Vacation vacation) {
+    public Employee(int employeeID, String firstName, String lastName, String emailAddress, String password, String createDateAndTime, Employee employee, com.school.company.model.Entity.categoryElement categoryElement, com.school.company.model.Entity.Email email) {
         this.employeeID = employeeID;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -69,10 +63,10 @@ public class Employee extends BaseEntity implements Serializable {
         this.employee = employee;
         this.categoryElement = categoryElement;
         Email = email;
-        this.vacation = vacation;
+
     }
 
-    public Employee(String firstName, String lastName, String emailAddress, String password, String createDateAndTime, Employee employee, com.school.company.model.Entity.categoryElement categoryElement, com.school.company.model.Entity.Email email, Vacation vacation) {
+    public Employee(String firstName, String lastName, String emailAddress, String password, String createDateAndTime, Employee employee, com.school.company.model.Entity.categoryElement categoryElement, com.school.company.model.Entity.Email email) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.emailAddress = emailAddress;
@@ -81,7 +75,7 @@ public class Employee extends BaseEntity implements Serializable {
         this.employee = employee;
         this.categoryElement = categoryElement;
         Email = email;
-        this.vacation = vacation;
+
     }
 
     public int getEmployeeID() {
@@ -152,11 +146,4 @@ public class Employee extends BaseEntity implements Serializable {
         Email = email;
     }
 
-    public Vacation getVacation() {
-        return vacation;
-    }
-
-    public void setVacation(Vacation vacation) {
-        this.vacation = vacation;
-    }
 }

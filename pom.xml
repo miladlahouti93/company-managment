@@ -18,13 +18,22 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
+    <jersey2.version>2.19</jersey2.version>
+    <jaxrs.version>2.0.1</jaxrs.version>
   </properties>
 
   <dependencies>
     <dependency>
+      <groupId>com.ibm.icu</groupId>
+      <artifactId>icu4j</artifactId>
+      <version>65.1</version>
+    </dependency>
+
+
+    <dependency>
       <groupId>org.hibernate</groupId>
       <artifactId>hibernate-core</artifactId>
-      <version>5.4.30.Final</version>
+      <version>5.4.32.Final</version>
     </dependency>
 
     <dependency>
@@ -39,11 +48,6 @@
       <version>8.0.23</version>
     </dependency>
 
-<!--    <dependency>-->
-<!--      <groupId>org.hibernate.javax.persistence</groupId>-->
-<!--      <artifactId>hibernate-jpa-2.0-api</artifactId>-->
-<!--      <version>1.0.1.Final</version>-->
-<!--    </dependency>-->
 
     <dependency>
       <groupId>org.hibernate.javax.persistence</groupId>
@@ -56,14 +60,6 @@
       <artifactId>servlet-api</artifactId>
       <version>2.5</version>
     </dependency>
-
-
-
-<!--    <dependency>-->
-<!--      <groupId>javax.servlet.jsp.jstl</groupId>-->
-<!--      <artifactId>jstl</artifactId>-->
-<!--      <version>1.2</version>-->
-<!--    </dependency>-->
 
     <dependency>
       <groupId>taglibs</groupId>
@@ -100,6 +96,18 @@
       <groupId>com.sun.jersey</groupId>
       <artifactId>jersey-server</artifactId>
       <version>1.8</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.sun.jersey</groupId>
+      <artifactId>jersey-client</artifactId>
+      <version>1.18</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.fasterxml.jackson.jaxrs</groupId>
+      <artifactId>jackson-jaxrs-json-provider</artifactId>
+      <version>2.4.1</version>
     </dependency>
 
 
@@ -148,8 +156,15 @@
     </dependency>
 
 
+
   </dependencies>
 
+  <repositories>
+    <repository>
+      <id>jitpack.io</id>
+      <url>https://jitpack.io</url>
+    </repository>
+  </repositories>
   <build>
     <finalName>Company Managment</finalName>
     <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->

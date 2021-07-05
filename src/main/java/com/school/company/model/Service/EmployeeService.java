@@ -1,7 +1,7 @@
 package com.school.company.model.Service;
 
-import com.school.company.model.DAO.EmployeeDAO;
-import com.school.company.model.DAO.EmployeeDaoImplement;
+import com.school.company.model.DAO.EmployeeDAO.EmployeeDAO;
+import com.school.company.model.DAO.EmployeeDAO.EmployeeDaoImplement;
 import com.school.company.model.Entity.Employee;
 
 import java.util.List;

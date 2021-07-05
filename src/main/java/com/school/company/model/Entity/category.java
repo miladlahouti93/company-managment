@@ -16,8 +16,6 @@ public class category extends BaseEntity implements Serializable {
     @Column(name = "c_CategoryName")
     private String categoryName;
 
-
-
     public category() {
     }
 

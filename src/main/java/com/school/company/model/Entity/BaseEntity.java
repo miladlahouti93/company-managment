@@ -1,5 +1,7 @@
 package com.school.company.model.Entity;
 
+import org.hibernate.annotations.UpdateTimestamp;
+
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.Version;
@@ -10,6 +12,7 @@ public class BaseEntity {
     @Version
     @Column(name = "c_Version")
     protected Long version;
+
 
     @Column(name = "c_UpdateDateAndTime")
     protected String updateDateAndTime;
